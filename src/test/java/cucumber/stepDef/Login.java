@@ -26,8 +26,10 @@ public class Login extends TestBase {
 
     @Given("^User in the login page$")
     public void user_in_the_login_page(){
-        String url_verify = driver.getCurrentUrl();
-        Assert.assertEquals(baseUrl, url_verify);
+      String url_verify = driver.getCurrentUrl();
+      Assert.assertEquals(baseUrl, url_verify);
+      boolean verify_login = driver.findElement(By.name("login-button")).isDisplayed();
+      Assert.assertTrue(true);
     }
     @When("^User input (.*) as registered username$")
     public void user_input_username_as_registered_username(String username){
@@ -45,6 +47,8 @@ public class Login extends TestBase {
     public void user_will_be_redirected_to_homepage_with_status_loginresults (String status) {
         String verify_success = driver.findElement(By.cssSelector(".app_logo")).getText();
         Assert.assertEquals("Swag Labs",verify_success);
+        boolean verify_home = driver.findElement(By.name("add-to-cart-sauce-labs-backpack")).isDisplayed();
+        Assert.assertTrue(verify_home);
     }
     @And("^User input (.*) as incorrect password$")
     public void user_input_password_as_incorrect_password(String password) {
